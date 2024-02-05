@@ -7,24 +7,6 @@
     margin: 30px!important;
     }
 
-{{--    form {--}}
-{{--    max-width: 700px!important;--}}
-{{--    margin: auto!important;--}}
-{{--    text-align:center!important;--}}
-{{--    }--}}
-
-{{--    textarea {--}}
-{{--    min-height: 100%!important;--}}
-{{--    max-height: 300px!important;--}}
-{{--    min-width: 200px;--}}
-
-{{--    }--}}
-
-{{--    input {--}}
-{{--    min-width: 200px;--}}
-{{--    width: 100%;--}}
-{{--    max-width: 300px!important;--}}
-{{--    }--}}
 @endsection
 
 @section('content')
