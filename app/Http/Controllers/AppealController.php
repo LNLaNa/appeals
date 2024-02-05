@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\StatusEnum;
 use App\Http\Requests\AppealRequest;
 use App\Models\Appeal;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -30,8 +31,12 @@ class AppealController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AppealRequest $request)
+    public function store(Request $request): RedirectResponse
     {
+        $request->validate([
+            'question' => 'required',
+        ]);
+
         Appeal::query()->create([
            'userName' => $request->userName??'Аноним',
            'question' => $request->question,

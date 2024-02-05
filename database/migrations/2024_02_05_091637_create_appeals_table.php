@@ -16,7 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('userName')->default('Аноним');
             $table->string('question');
-            $table->string('answer')->default('');
+//            $table->string('answer')->default('null');
+            $table->string('answer')->nullable();
             $table->string('status')->default(StatusEnum::FALSE->name);
             $table->timestamps();
         });

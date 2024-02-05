@@ -9,6 +9,7 @@ class AppealRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => '',
             'question' => 'required|min:20|max:1000',
         ];
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppealController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AppealController::class,'index']);
-Route::post('/create', [AppealController::class,'store'])->name('appeals.create');
+Route::post('/create', [AppealController::class,'store'])->name('appeals.store');
+
+Route::get('/admin',[AdminController::class,'index'])->name('admin');
+Route::put('/admin/addAnswer/{appeal}',[AdminController::class,'addAnswer'])->name('addAnswer');
+Route::get('/admin/deleteAppeal/{appeal}',[AdminController::class,'deleteAppeal'])->name('deleteAppeal');
