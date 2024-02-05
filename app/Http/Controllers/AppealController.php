@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\StatusEnum;
+use App\Http\Requests\AppealRequest;
 use App\Models\Appeal;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AppealController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $appeals = Appeal::query()->where('status', StatusEnum::TRUE->name)->orderByDesc('created_at')->get();
+        return view('index',compact('appeals'));
     }
 
     /**
@@ -26,9 +30,13 @@ class AppealController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AppealRequest $request)
     {
-        //
+        Appeal::query()->create([
+           'userName' => $request->userName??'Аноним',
+           'question' => $request->question,
+        ]);
+        return redirect('/');
     }
 
     /**
