@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppealController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', );
+Route::get('/', [AppealController::class,'index']);
+Route::post('/create', [AppealController::class,'store'])->name('appeals.create');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\StatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,10 @@ return new class extends Migration
     {
         Schema::create('appeals', function (Blueprint $table) {
             $table->id();
+            $table->string('userName')->default('Аноним');
+            $table->string('question');
+            $table->string('answer')->default('');
+            $table->string('status')->default(StatusEnum::FALSE->name);
             $table->timestamps();
         });
     }
