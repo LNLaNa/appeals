@@ -16,7 +16,7 @@ class AppealController extends Controller
      */
     public function index(): View
     {
-        $appeals = Appeal::query()->where('status', StatusEnum::TRUE->name)->orderByDesc('created_at')->get();
+        $appeals = Appeal::query()->where('status', StatusEnum::TRUE->name)->orderByDesc('updated_at')->get();
         return view('index',compact('appeals'));
     }
 
