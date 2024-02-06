@@ -19,6 +19,7 @@ return new class extends Migration
 //            $table->string('answer')->default('null');
             $table->string('answer')->nullable();
             $table->string('status')->default(StatusEnum::FALSE->name);
+            $table->boolean('isFixed')->default(0);
             $table->timestamps();
         });
     }

@@ -4,6 +4,14 @@ namespace App\Enums;
 
 enum StatusEnum: string
 {
-    case TRUE = 'Есть ответ';
-    case FALSE = 'Нет ответа';
+    case TRUE = 'Отвечено';
+    case FALSE = 'Не отвечено';
+
+//    public function translate():string
+//    {
+//        return  match ($this){
+//            self::TRUE => 'Есть ответа',
+//            self::FALSE => 'Нет ответа',
+//        };
+//    }
 }

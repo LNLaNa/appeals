@@ -21,3 +21,4 @@ Route::post('/create', [AppealController::class,'store'])->name('appeals.store')
 Route::get('/admin',[AdminController::class,'index'])->name('admin');
 Route::put('/admin/addAnswer/{appeal}',[AdminController::class,'addAnswer'])->name('addAnswer');
 Route::get('/admin/deleteAppeal/{appeal}',[AdminController::class,'deleteAppeal'])->name('deleteAppeal');
+Route::get('/admin/appeal/{appeal}',[AdminController::class,'showAppeal'])->name('appeal.show');

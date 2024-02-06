@@ -16,7 +16,7 @@
         <div style="margin: 30px 0; display: flex; gap: 30px; flex-direction: column;">
             @foreach($appeals as $appeal)
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" @if($appeal->status == StatusEnum::FALSE->name) style="background-color: #f8d7da;" @else style="background-color: #d1e7dd; @endif">
                         <div class="row align-items-center">
                             <div class="col">
                                 @foreach(StatusEnum::cases() as $status)
@@ -25,32 +25,41 @@
                                     @endif
                                 @endforeach
                             </div>
-                            <div class="col-auto"><a href="{{route('deleteAppeal',$appeal)}}" class="btn btn-outline-danger">Удалить</a></div>
+
+                            <div class="col-auto">
+                                <div class="row">
+                                    <div class="col-auto"><a href="{{route('appeal.show',$appeal)}}" class="btn btn-outline-info">Подробнее</a></div>
+                                    <div class="col-auto"><a href="{{route('deleteAppeal',$appeal)}}" class="btn btn-outline-danger">Удалить</a></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{$appeal->question}}</h5>
                         <div>Имя: {{$appeal->userName}}</div>
-                        @empty($appeal->answer)
-                            <div>
-                                <form action="{{route('addAnswer',$appeal)}}" method="post">
-                                    @csrf
-                                    @method('put')
-                                    <div class="row">
-                                        <div class="col"><input type="text" class="form-control" name="answer" placeholder="Ответ"></div>
-                                        <div class="col-auto"><input type="submit"  class="btn btn-outline-info"></div>
-                                    </div>
-                                </form>
-                            </div>
-                        @endempty
+                        <h5 class="card-title">{{$appeal->question}}</h5>
+{{--                        @empty($appeal->answer)--}}
+{{--                            <div>--}}
+{{--                                <form action="{{route('addAnswer',$appeal)}}" method="post">--}}
+{{--                                    @csrf--}}
+{{--                                    @method('put')--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col"><input type="text" class="form-control" name="answer" placeholder="Ответ"></div>--}}
+{{--                                        <div class="col-auto"><input type="submit"  class="btn btn-outline-info"></div>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        @endempty--}}
 
-                        @isset($appeal->answer)
-                            <div>Ответ: {{$appeal->answer}}</div>
-                        @endisset
+{{--                        @isset($appeal->answer)--}}
+{{--                            <div>Ответ: {{$appeal->answer}}</div>--}}
+{{--                        @endisset--}}
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="justify-content-center" style="display: flex;">
+            {{$appeals->links()}}
         </div>
 
     </div>
