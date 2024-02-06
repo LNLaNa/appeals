@@ -56,7 +56,7 @@
                         <h5 class="card-title">{{$appeal->question}}</h5>
                         <div>Имя: {{$appeal->userName}}</div>
                         @isset($appeal->answer)
-                            <div>Ответ: {{$appeal->answer}}</div>
+                            <div>Ответ: {{--{{$appeal->answer}}--}}</div>
                         @endisset
 {{--                        @empty($appeal->answer)--}}
                             <div>
